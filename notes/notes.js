@@ -351,4 +351,25 @@ console.log(objeto);
 
 // Estas dos funciones son muy útiles para la serialización y deserialización de datos cuando trabajas con APIs, almacenamiento de datos o comunicación entre clientes y servidores. Te permiten intercambiar datos en un formato estándar y luego trabajar con ellos en JavaScript como objetos normales.
 
+// Qué es recursividad
 
+// La recursividad en JavaScript se refiere a la capacidad de una función para llamarse a sí misma dentro de su propia definición. Es un concepto común en programación en el que una función resuelve un problema dividiéndolo en subproblemas más pequeños y resolviéndolos de manera recursiva. En otras palabras, una función recursiva es una función que se llama a sí misma para resolver una tarea o alcanzar una condición de parada.
+
+// Un ejemplo clásico de recursión es el cálculo del factorial de un número. Aquí tienes una función recursiva para calcular el factorial de un número en JavaScript:
+
+function factorial(n) {
+    // Caso base: si n es 0, el factorial es 1
+    if (n === 0) {
+      return 1;
+    }
+    // Caso recursivo: llamamos a la función con un valor más pequeño
+    else {
+      return n * factorial(n - 1);
+    }
+  }
+  
+  console.log(factorial(5)); // Resultado: 120 (5! = 5 * 4 * 3 * 2 * 1 = 120)
+  
+//   En este ejemplo, la función factorial se llama a sí misma con un valor más pequeño en cada iteración hasta que se alcanza el caso base (n igual a 0). La recursividad es una técnica poderosa en programación que se utiliza para resolver problemas que se pueden descomponer en casos más simples. Sin embargo, es importante asegurarse de que cada llamada recursiva se acerque al caso base para evitar bucles infinitos.
+
+// La recursividad se utiliza en una variedad de algoritmos y enfoques de resolución de problemas, y puede ser especialmente útil para abordar problemas complejos y estructuras de datos, como árboles y grafos.
