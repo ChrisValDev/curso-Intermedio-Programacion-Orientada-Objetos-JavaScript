@@ -87,11 +87,23 @@ console.log(destino); // Imprimirá { a: 1, b: 3, c: 4 }
 // Object.freeze(obj)
 // Este método "congela" un objeto, lo que significa que no se pueden agregar, eliminar o modificar propiedades en él.
 
-const persona = { nombre: 'Juan', edad: 30 };
-Object.freeze(persona);
+const persona = { 
+    nombre: 'Juan', 
+    edad: 30 
+};
+Object.freeze(persona); // Congelamos el objeto
 
+// Intentemos modificar una propiedad existente
 persona.nombre = 'Pedro'; // No se permitirá la modificación
 console.log(persona); // Imprimirá { nombre: 'Juan', edad: 30 }
+
+// Intentemos agregar una nueva propiedad
+persona.ciudad = 'Barcelona';
+console.log(persona); // { nombre: 'Pedro', edad: 30 }, no se agrega la propiedad "ciudad"
+  
+// Intentemos eliminar una propiedad existente
+delete persona.edad;
+console.log(persona); // { nombre: 'Pedro' }, no se elimina la propiedad "edad"
 
 // Object.seal() es un método en JavaScript que se utiliza para "sellar" un objeto, lo que significa que previene la adición de nuevas propiedades y evita la eliminación de propiedades existentes en el objeto. Sin embargo, las propiedades existentes aún pueden ser modificadas.
 
@@ -215,3 +227,37 @@ objeto.nombre = 'Marta';
 console.log(objeto.nombre); // Imprimirá 'Ana' porque la propiedad no es modificable
 
 // En este ejemplo, primero usamos Object.defineProperty para definir una propiedad "nombre" en el objeto "objeto". Luego, podemos modificar o eliminar la propiedad según las configuraciones que hemos establecido. Finalmente, volvemos a definir la propiedad "nombre" con diferentes configuraciones. Esto ilustra cómo puedes controlar las características de una propiedad en un objeto utilizando Object.defineProperty.
+
+//Cómo funciona la memoria en JavaScript
+
+// La memoria Stack y la memoria Heap son dos áreas fundamentales en la gestión de la memoria en lenguajes de programación, incluyendo JavaScript. Cada una tiene un propósito diferente y almacena tipos de datos de manera distinta:
+
+// Memoria Stack (Pila):
+
+// Almacenamiento de Datos: La memoria Stack almacena principalmente datos relacionados con la ejecución de funciones y la gestión del flujo de control del programa, como variables locales y referencias a funciones.
+
+// Operaciones LIFO: La memoria Stack sigue el principio de LIFO (Last In, First Out), lo que significa que el último elemento agregado a la pila es el primero en ser eliminado. Cuando una función se llama, un nuevo contexto de ejecución se coloca en la pila. Cuando la función termina, su contexto se elimina de la pila.
+
+// Limitada y de Tamaño Fijo: La memoria Stack tiene un tamaño fijo y limitado, y su capacidad depende de la implementación y configuración del entorno de ejecución de JavaScript. Esto significa que puede llenarse si se anidan muchas funciones o si se crean grandes estructuras de datos en la memoria Stack.
+
+// Velocidad: La memoria Stack es más rápida en términos de acceso y gestión de memoria, ya que las operaciones de apilado y desapilado son simples.
+
+// Almacenamiento de Datos Primitivos: En JavaScript, las variables primitivas (como números, cadenas, booleanos) se almacenan en la memoria Stack.
+
+// Memoria Heap:
+
+// Almacenamiento de Objetos y Datos Dinámicos: La memoria Heap se utiliza para almacenar objetos y datos dinámicos que no se ajustan al tamaño fijo de la memoria Stack. Los objetos, arrays y otros tipos de datos más complejos se almacenan en la memoria Heap.
+
+// Gestión Manual de la Memoria: En JavaScript, no es necesario administrar manualmente la memoria en la memoria Heap. El motor JavaScript se encarga de la asignación y liberación de memoria en esta área.
+
+// Acceso más Lento: El acceso a datos almacenados en la memoria Heap es generalmente más lento en comparación con la memoria Stack, ya que implica búsqueda y administración más complejas.
+
+// Almacenamiento de Datos de Referencia: En JavaScript, las variables de referencia (como objetos y funciones) se almacenan en la memoria Heap. Esto incluye objetos creados con new, matrices, y otros objetos más complejos.
+
+// En resumen, la memoria Stack se utiliza para gestionar la ejecución de funciones y las variables locales, mientras que la memoria Heap se utiliza para almacenar datos más grandes y complejos, como objetos y estructuras de datos dinámicas. Comprender la diferencia entre estas dos áreas es importante para optimizar el rendimiento y evitar problemas de gestión de memoria en tus aplicaciones JavaScript.
+
+
+
+
+
+
