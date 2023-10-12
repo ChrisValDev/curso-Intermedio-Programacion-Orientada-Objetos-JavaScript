@@ -536,4 +536,22 @@ const objetoRORO = (function() {
 // En este ejemplo, objetoRORO es un objeto que utiliza el patrón RORO. La propiedad propiedadPrivada se puede establecer una sola vez utilizando el método setPropiedad(), y una vez que se establece, no se puede modificar. La propiedad solo se puede obtener con el método getPropiedad().
 
 // El patrón RORO es útil en situaciones en las que se necesita garantizar que ciertas propiedades de un objeto no se cambien después de establecerse. Esto puede ser especialmente útil en escenarios en los que la inmutabilidad es importante para mantener la integridad de los datos.
-  
+
+
+// Duck typing
+
+// El duck typing es un concepto en programación que se refiere a la evaluación de un objeto por su comportamiento y capacidad en lugar de por su tipo o clase específica. La idea detrás del duck typing es que "si parece un pato, nada como un pato y grazna como un pato, entonces es un pato". En otros términos, en lugar de verificar explícitamente el tipo de un objeto, se verifica si el objeto puede realizar las acciones necesarias.
+
+// En JavaScript, que es un lenguaje de programación de tipado dinámico y débilmente tipado, el duck typing es común. No se requiere una declaración de tipo o una interfaz específica para determinar si un objeto se puede utilizar de cierta manera. En cambio, se comprueba si el objeto tiene las propiedades y los métodos necesarios para realizar una tarea específica.
+
+// Un ejemplo típico de duck typing en JavaScript es el uso de un bucle for...of para iterar sobre elementos de una colección:
+
+const array = [1, 2, 3];
+
+for (const elemento of array) {
+  console.log(elemento);
+}
+
+// En este caso, no necesitas preocuparte por el tipo específico de array, siempre y cuando tenga una estructura iterable, lo que significa que se puede recorrer con un bucle for...of.
+
+// El duck typing promueve la flexibilidad y la reutilización de código, ya que te permite trabajar con objetos que no necesariamente comparten una jerarquía de clases o un tipo común, pero que pueden realizar las mismas acciones. Sin embargo, debes ser consciente de que esto también puede llevar a errores si asumes que un objeto tiene ciertas propiedades o métodos sin verificarlos previamente. Por lo tanto, es importante realizar comprobaciones adecuadas para garantizar el comportamiento deseado.
