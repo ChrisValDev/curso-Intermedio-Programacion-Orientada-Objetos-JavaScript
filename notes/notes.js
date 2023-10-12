@@ -501,3 +501,39 @@ const persona = {
   console.log(Object.isFrozen(persona)); // true, no se pueden modificar propiedades existentes
   
 // En este ejemplo, después de congelar el objeto "persona" con Object.freeze(persona), Object.isFrozen(persona) devuelve true, lo que indica que el objeto está congelado. Como resultado, no se pueden realizar ninguna de las siguientes acciones: agregar nuevas propiedades, eliminar propiedades existentes ni modificar el valor de propiedades existentes en el objeto. La congelación proporciona una inmutabilidad completa al objeto.
+
+
+// Patron RORO
+
+// El patrón RORO (Reveal-Only/Reveal-Once) en JavaScript es una técnica que se utiliza para controlar el acceso a propiedades de un objeto, permitiendo que estas propiedades solo se puedan revelar una vez o sean de solo lectura después de ser establecidas. Este patrón es útil en situaciones en las que se desea garantizar que ciertas propiedades no se puedan modificar una vez que se han establecido.
+
+// El patrón RORO se implementa generalmente utilizando el concepto de propiedades getter (acceso) y setter (establecimiento) en objetos en JavaScript. Aquí tienes un ejemplo de cómo se puede implementar el patrón RORO:
+
+const objetoRORO = (function() {
+    let propiedadPrivada;
+  
+    return {
+      setPropiedad: function(valor) {
+        if (typeof propiedadPrivada === 'undefined') {
+          propiedadPrivada = valor;
+        } else {
+          console.log('La propiedad ya ha sido revelada y no se puede modificar.');
+        }
+      },
+      getPropiedad: function() {
+        return propiedadPrivada;
+      }
+    };
+  })();
+  
+  objetoRORO.setPropiedad(42); // Establece la propiedad
+  console.log(objetoRORO.getPropiedad()); // Obtiene la propiedad (42)
+  
+  objetoRORO.setPropiedad(99); // Intenta modificar la propiedad
+  console.log(objetoRORO.getPropiedad()); // La propiedad no cambia y se muestra el mensaje de error
+
+
+// En este ejemplo, objetoRORO es un objeto que utiliza el patrón RORO. La propiedad propiedadPrivada se puede establecer una sola vez utilizando el método setPropiedad(), y una vez que se establece, no se puede modificar. La propiedad solo se puede obtener con el método getPropiedad().
+
+// El patrón RORO es útil en situaciones en las que se necesita garantizar que ciertas propiedades de un objeto no se cambien después de establecerse. Esto puede ser especialmente útil en escenarios en los que la inmutabilidad es importante para mantener la integridad de los datos.
+  
