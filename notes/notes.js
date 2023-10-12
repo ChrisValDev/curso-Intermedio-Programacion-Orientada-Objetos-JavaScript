@@ -36,6 +36,7 @@ class MiClase {
 // Metodos estaticos del prototipo Object
 
 // En JavaScript, el prototipo Object proporciona varios métodos estáticos que se pueden utilizar para realizar operaciones en objetos. A continuación, te mostraré algunos de los métodos estáticos más comunes del objeto Object y cómo utilizarlos con ejemplos de código:
+
 // Object.keys(obj)
 // Este método estático devuelve un array de las propiedades enumerables de un objeto.
 
@@ -91,6 +92,36 @@ Object.freeze(persona);
 
 persona.nombre = 'Pedro'; // No se permitirá la modificación
 console.log(persona); // Imprimirá { nombre: 'Juan', edad: 30 }
+
+// Object.seal() es un método en JavaScript que se utiliza para "sellar" un objeto, lo que significa que previene la adición de nuevas propiedades y evita la eliminación de propiedades existentes en el objeto. Sin embargo, las propiedades existentes aún pueden ser modificadas.
+
+// Cuando sellas un objeto usando Object.seal(), puedes cambiar los valores de las propiedades existentes, pero no puedes agregar nuevas propiedades ni eliminar las propiedades existentes. Esto hace que el objeto sea "cerrado" para cambios en su estructura, pero aún puedes actualizar sus valores.
+
+// Aquí tienes un ejemplo de cómo funciona Object.seal():
+
+const persona = {
+    nombre: 'Juan',
+    edad: 30
+  };
+  
+  Object.seal(persona); // Sellamos el objeto
+  
+  // Intentemos modificar una propiedad existente
+  persona.nombre = 'Pedro';
+  console.log(persona); // { nombre: 'Pedro', edad: 30 }
+  
+  // Intentemos agregar una nueva propiedad
+  persona.ciudad = 'Barcelona';
+  console.log(persona); // { nombre: 'Pedro', edad: 30 }, no se agrega la propiedad "ciudad"
+  
+  // Intentemos eliminar una propiedad existente
+  delete persona.edad;
+  console.log(persona); // { nombre: 'Pedro' }, no se elimina la propiedad "edad"
+
+//   En este ejemplo, después de sellar el objeto "persona" con Object.seal(persona), podemos cambiar el valor de la propiedad existente "nombre" pero no podemos agregar nuevas propiedades ni eliminar propiedades existentes como "ciudad" o "edad". Las operaciones para agregar o eliminar propiedades no tienen efecto.
+
+// Object.seal() es útil cuando deseas asegurarte de que un objeto mantenga una estructura fija y que no se le puedan agregar nuevas propiedades de manera accidental, lo que puede ayudar a prevenir errores inesperados en tu código.
+  
 
 // Object.getOwnPropertyNames, Object.getOwnPropertySymbols, y Object.getOwnPropertyDescriptors son métodos estáticos que se utilizan para obtener información sobre las propiedades de un objeto, incluyendo propiedades no enumerables y símbolos. Aquí tienes ejemplos de cada uno de ellos:
 
