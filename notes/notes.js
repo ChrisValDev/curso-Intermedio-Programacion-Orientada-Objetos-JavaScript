@@ -314,5 +314,41 @@ const original = {
 
 // Ten en cuenta que si necesitas copiar un objeto de manera profunda (lo que implica copiar todas las propiedades y objetos anidados de manera recursiva), debes utilizar técnicas más avanzadas, como la función JSON.parse(JSON.stringify(obj)), bibliotecas de clonación profunda, o implementar tu propia lógica de clonación profunda.
 
+// JSON.parse() y JSON.stringify() 
+
+// son dos funciones en JavaScript que se utilizan para convertir entre objetos JavaScript y representaciones de texto en formato JSON (JavaScript Object Notation). Aquí te muestro cómo usar cada una de ellas:
+
+// JSON.stringify():
+
+// Esta función toma un objeto JavaScript y lo convierte en una cadena JSON. Se utiliza principalmente cuando deseas enviar datos a través de una red o almacenar datos en un archivo. Aquí tienes un ejemplo de cómo usarlo:
+
+const objeto = {
+  nombre: "Juan",
+  edad: 30,
+  ciudad: "Barcelona"
+};
+
+const objetoJSON = JSON.stringify(objeto);
+
+console.log(objetoJSON);
+// Imprimirá '{"nombre":"Juan","edad":30,"ciudad":"Barcelona"}'
+
+// JSON.stringify() convierte el objeto objeto en una cadena JSON válida.
+
+// JSON.parse():
+
+// Esta función toma una cadena JSON y la convierte en un objeto JavaScript. Se utiliza principalmente cuando recibes datos en formato JSON y deseas trabajar con ellos como objetos JavaScript. Aquí tienes un ejemplo de cómo usarlo:
+
+
+const cadenaJSON = '{"nombre":"Ana","edad":25,"ciudad":"Madrid"}';
+
+const objeto = JSON.parse(cadenaJSON);
+
+console.log(objeto);
+// Imprimirá { nombre: 'Ana', edad: 25, ciudad: 'Madrid' }
+
+// JSON.parse() toma la cadena JSON cadenaJSON y la convierte en un objeto JavaScript.
+
+// Estas dos funciones son muy útiles para la serialización y deserialización de datos cuando trabajas con APIs, almacenamiento de datos o comunicación entre clientes y servidores. Te permiten intercambiar datos en un formato estándar y luego trabajar con ellos en JavaScript como objetos normales.
 
 
