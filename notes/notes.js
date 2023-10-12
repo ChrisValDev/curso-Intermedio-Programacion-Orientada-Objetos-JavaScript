@@ -146,3 +146,41 @@ const obj = {
 //   En este ejemplo, Object.getOwnPropertyDescriptors devuelve objetos que describen las propiedades "a" y "c" con sus respectivas configuraciones.
 
 // Estos métodos te permiten obtener información detallada sobre las propiedades de un objeto, lo que puede ser útil en situaciones donde necesitas manipular o inspeccionar objetos de manera más completa.
+
+// Object.defineProperty es un método que se utiliza para definir o modificar las propiedades de un objeto en JavaScript. Específicamente, te permite configurar propiedades de un objeto, incluyendo su valor, enumerabilidad, capacidad de escritura y más.
+
+// Aquí hay un ejemplo de cómo se usa Object.defineProperty para definir una propiedad en un objeto:
+
+const objeto = {};
+
+// Define una propiedad llamada 'nombre' con un valor inicial
+Object.defineProperty(objeto, 'nombre', {
+  value: 'Juan',
+  writable: true, // La propiedad es modificable
+  enumerable: true, // La propiedad es iterable en bucles for...in
+  configurable: true, // La propiedad es configurable
+});
+
+console.log(objeto.nombre); // Imprimirá 'Juan'
+
+// Intenta modificar la propiedad
+objeto.nombre = 'Pedro';
+console.log(objeto.nombre); // Imprimirá 'Pedro'
+
+// Intenta eliminar la propiedad
+delete objeto.nombre;
+console.log(objeto.nombre); // Imprimirá 'Pedro' porque la propiedad es configurable
+
+// Redefine la propiedad con configuración diferente
+Object.defineProperty(objeto, 'nombre', {
+  value: 'Ana',
+  writable: false, // La propiedad no es modificable
+});
+
+console.log(objeto.nombre); // Imprimirá 'Ana'
+
+// Intenta modificar la propiedad de nuevo
+objeto.nombre = 'Marta';
+console.log(objeto.nombre); // Imprimirá 'Ana' porque la propiedad no es modificable
+
+// En este ejemplo, primero usamos Object.defineProperty para definir una propiedad "nombre" en el objeto "objeto". Luego, podemos modificar o eliminar la propiedad según las configuraciones que hemos establecido. Finalmente, volvemos a definir la propiedad "nombre" con diferentes configuraciones. Esto ilustra cómo puedes controlar las características de una propiedad en un objeto utilizando Object.defineProperty.
