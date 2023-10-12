@@ -287,8 +287,32 @@ juan.saludar(); // Imprimirá "Hola, mi nombre es Juan y tengo 30 años."
 
 // Object.create() es útil para implementar la herencia en JavaScript, ya que te permite crear objetos que comparten características de un prototipo común. Puedes crear varios objetos con el mismo prototipo y luego personalizarlos agregando propiedades específicas para cada objeto. Esto es una forma alternativa de crear objetos en lugar de utilizar el constructor de funciones o la clase.
 
+//Shallow copy 
 
+// Una "shallow copy" (copia superficial) en JavaScript se refiere a la creación de un nuevo objeto o estructura de datos que es una copia de otro objeto, pero donde solo se duplica la primera capa de propiedades o elementos. Las propiedades u elementos anidados no se copian en profundidad, sino que se mantienen como referencias al objeto original. En otras palabras, solo se copian las referencias a los objetos anidados en lugar de copiar los objetos completos.
 
+// Para realizar una shallow copy en JavaScript, puedes utilizar diferentes enfoques, como el operador de propagación (...), Object.assign(), o simplemente copiar propiedades manualmente. Aquí tienes un ejemplo de cómo se hace una shallow copy de un objeto:
+
+const original = {
+    a: 1,
+    b: { c: 2 }
+  };
+  
+  // Usando el operador de propagación
+  const shallowCopy1 = { ...original };
+  shallowCopy1.b.c = 2;
+  
+  // Usando Object.assign
+  const shallowCopy2 = Object.assign({}, original);
+  shallowCopy2.b.c = 2;
+  
+  console.log(original);      // { a: 1, b: { c: 2 } }
+  console.log(shallowCopy1);  // { a: 1, b: { c: 2 } }
+  console.log(shallowCopy2);  // { a: 1, b: { c: 2 } }
+  
+// En este ejemplo, original es un objeto con una propiedad b que es otro objeto anidado. Luego, creamos dos "shallow copies" de original, shallowCopy1 y shallowCopy2. Cuando modificamos la propiedad b.c en shallowCopy1 y shallowCopy2, la propiedad correspondiente en original también se modifica, ya que ambas copias hacen referencia al mismo objeto anidado.
+
+// Ten en cuenta que si necesitas copiar un objeto de manera profunda (lo que implica copiar todas las propiedades y objetos anidados de manera recursiva), debes utilizar técnicas más avanzadas, como la función JSON.parse(JSON.stringify(obj)), bibliotecas de clonación profunda, o implementar tu propia lógica de clonación profunda.
 
 
 
