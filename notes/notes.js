@@ -373,3 +373,131 @@ function factorial(n) {
 //   En este ejemplo, la función factorial se llama a sí misma con un valor más pequeño en cada iteración hasta que se alcanza el caso base (n igual a 0). La recursividad es una técnica poderosa en programación que se utiliza para resolver problemas que se pueden descomponer en casos más simples. Sin embargo, es importante asegurarse de que cada llamada recursiva se acerque al caso base para evitar bucles infinitos.
 
 // La recursividad se utiliza en una variedad de algoritmos y enfoques de resolución de problemas, y puede ser especialmente útil para abordar problemas complejos y estructuras de datos, como árboles y grafos.
+
+
+// Deep copy con recursividad
+
+// Un "deep copy" (copia profunda) con recursividad en JavaScript se refiere a una copia de un objeto que incluye todas las propiedades del objeto original y todas las propiedades anidadas, creando una copia independiente de todos los objetos anidados en lugar de solo copiar las referencias. Esto implica copiar cada nivel de propiedades y objetos anidados de manera recursiva hasta que se haya creado una copia completa del objeto original.
+
+// Dado que en JavaScript, los objetos pueden tener anidaciones de objetos dentro de objetos y así sucesivamente, una copia profunda con recursividad asegura que se dupliquen todos los objetos y estructuras anidadas de manera completa.
+
+// A continuación, se muestra un ejemplo de cómo realizar una copia profunda con recursividad en JavaScript:
+
+function deepCopy(obj) {
+    if (typeof obj !== 'object' || obj === null) {
+      return obj; // Si no es un objeto, simplemente devuelve el valor
+    }
+  
+    if (Array.isArray(obj)) {
+      // Si es un array, crea una copia vacía y copia cada elemento de manera recursiva
+      const copia = [];
+      for (let i = 0; i < obj.length; i++) {
+        copia[i] = deepCopy(obj[i]);
+      }
+      return copia;
+    }
+  
+    // Si es un objeto, crea un objeto vacío y copia cada propiedad de manera recursiva
+    const copia = {};
+    for (const clave in obj) {
+      if (obj.hasOwnProperty(clave)) {
+        copia[clave] = deepCopy(obj[clave]);
+      }
+    }
+    return copia;
+  }
+  
+  const objetoOriginal = {
+    a: 1,
+    b: [2, 3, 4],
+    c: { d: 5, e: { f: 6 } }
+  };
+  
+  const copiaProfunda = deepCopy(objetoOriginal);
+  
+  // Modificamos la copia profunda para demostrar su independencia
+  copiaProfunda.b[0] = 7;
+  
+  console.log(objetoOriginal);
+  console.log(copiaProfunda);
+
+//   En este ejemplo, la función deepCopy toma un objeto y realiza una copia completa con recursividad, incluyendo copias de todos los objetos anidados y estructuras de datos. Esto asegura que cualquier modificación en la copia profunda no afecte al objeto original ni a sus estructuras anidadas.
+
+// Object.isSealed() es un método en JavaScript que se utiliza para determinar si un objeto está "sellado". Un objeto sellado es un objeto en el cual no se pueden agregar nuevas propiedades, ni eliminar propiedades existentes, aunque aún se pueden modificar los valores de las propiedades existentes.
+
+// La sintaxis de Object.isSealed() es la siguiente:
+
+Object.isSealed(obj)
+
+// Donde obj es el objeto que se verifica para determinar si está sellado o no.
+
+// Este método devuelve true si el objeto obj está sellado y false si no lo está.
+
+// Aquí hay un ejemplo de cómo se utiliza Object.isSealed():
+
+const persona = {
+    nombre: 'Juan',
+    edad: 30
+  };
+  
+  // Sellamos el objeto
+  Object.seal(persona);
+  
+  console.log(Object.isSealed(persona)); // true, el objeto está sellado
+  
+  // Intentamos agregar una nueva propiedad
+  persona.ciudad = 'Barcelona';
+  
+  console.log(Object.isSealed(persona)); // true, no se puede agregar una nueva propiedad
+  
+  // Intentamos eliminar una propiedad existente
+  delete persona.edad;
+  
+  console.log(Object.isSealed(persona)); // true, no se puede eliminar una propiedad existente
+  
+  // Modificamos una propiedad existente
+  persona.nombre = 'Pedro';
+  
+  console.log(persona); // { nombre: 'Pedro', edad: 30 }
+  
+// En este ejemplo, después de sellar el objeto "persona" con Object.seal(persona), Object.isSealed(persona) devuelve true, lo que indica que el objeto está sellado. Luego, intentamos agregar una nueva propiedad y eliminar una propiedad existente, pero ambas operaciones no tienen efecto. Sin embargo, todavía podemos modificar el valor de una propiedad existente, como se muestra al modificar la propiedad "nombre".
+
+
+// Object.isFrozen() es un método en JavaScript que se utiliza para determinar si un objeto está "congelado". Un objeto congelado es un objeto en el que no se pueden agregar, eliminar ni modificar propiedades existentes. Es una restricción más fuerte que la que ofrece Object.seal().
+
+// La sintaxis de Object.isFrozen() es la siguiente:
+
+Object.isFrozen(obj)
+
+// Donde obj es el objeto que se verifica para determinar si está congelado o no.
+
+// Este método devuelve true si el objeto obj está congelado y false si no lo está.
+
+// Aquí hay un ejemplo de cómo se utiliza Object.isFrozen():
+
+const persona = {
+    nombre: 'Juan',
+    edad: 30
+  };
+  
+  // Congelamos el objeto
+  Object.freeze(persona);
+  
+  console.log(Object.isFrozen(persona)); // true, el objeto está congelado
+  
+  // Intentamos agregar una nueva propiedad
+  persona.ciudad = 'Barcelona';
+  
+  console.log(Object.isFrozen(persona)); // true, no se puede agregar una nueva propiedad
+  
+  // Intentamos eliminar una propiedad existente
+  delete persona.edad;
+  
+  console.log(Object.isFrozen(persona)); // true, no se puede eliminar una propiedad existente
+  
+  // Modificamos una propiedad existente
+  persona.nombre = 'Pedro';
+  
+  console.log(Object.isFrozen(persona)); // true, no se pueden modificar propiedades existentes
+  
+// En este ejemplo, después de congelar el objeto "persona" con Object.freeze(persona), Object.isFrozen(persona) devuelve true, lo que indica que el objeto está congelado. Como resultado, no se pueden realizar ninguna de las siguientes acciones: agregar nuevas propiedades, eliminar propiedades existentes ni modificar el valor de propiedades existentes en el objeto. La congelación proporciona una inmutabilidad completa al objeto.
