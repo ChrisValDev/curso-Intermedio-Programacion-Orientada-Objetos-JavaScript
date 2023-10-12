@@ -256,6 +256,37 @@ console.log(objeto.nombre); // Imprimirá 'Ana' porque la propiedad no es modifi
 
 // En resumen, la memoria Stack se utiliza para gestionar la ejecución de funciones y las variables locales, mientras que la memoria Heap se utiliza para almacenar datos más grandes y complejos, como objetos y estructuras de datos dinámicas. Comprender la diferencia entre estas dos áreas es importante para optimizar el rendimiento y evitar problemas de gestión de memoria en tus aplicaciones JavaScript.
 
+// Object.create() es un método en JavaScript que se utiliza para crear un nuevo objeto y establecer su prototipo a otro objeto existente. Esto permite crear un objeto que hereda propiedades y métodos del objeto prototipo. La sintaxis general es la siguiente:
+
+
+Object.create(proto[, propertiesObject])
+
+// proto: El objeto que será el prototipo del nuevo objeto.
+// propertiesObject (opcional): Un objeto que define las propiedades adicionales para el nuevo objeto. Este objeto puede contener configuraciones para las propiedades, como value, writable, enumerable, y configurable.
+// Aquí hay un ejemplo de cómo usar Object.create():
+
+
+// Definimos un objeto prototipo
+const personaPrototipo = {
+  saludar: function() {
+    console.log(`Hola, mi nombre es ${this.nombre} y tengo ${this.edad} años.`);
+  }
+};
+
+// Creamos un nuevo objeto que hereda del prototipo
+const juan = Object.create(personaPrototipo);
+
+// Agregamos propiedades al nuevo objeto
+juan.nombre = 'Juan';
+juan.edad = 30;
+
+// Llamamos al método del prototipo
+juan.saludar(); // Imprimirá "Hola, mi nombre es Juan y tengo 30 años."
+
+// En este ejemplo, juan es un nuevo objeto que se ha creado con Object.create(personaPrototipo). Esto establece personaPrototipo como el prototipo de juan, lo que significa que juan hereda el método saludar() del prototipo. Luego, agregamos propiedades nombre y edad específicas para juan.
+
+// Object.create() es útil para implementar la herencia en JavaScript, ya que te permite crear objetos que comparten características de un prototipo común. Puedes crear varios objetos con el mismo prototipo y luego personalizarlos agregando propiedades específicas para cada objeto. Esto es una forma alternativa de crear objetos en lugar de utilizar el constructor de funciones o la clase.
+
 
 
 
