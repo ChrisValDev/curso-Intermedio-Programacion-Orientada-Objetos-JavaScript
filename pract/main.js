@@ -1,4 +1,3 @@
-//Shallow copy
 const obj1 = {
     a: "a",
     b: "b",
@@ -8,12 +7,10 @@ const obj1 = {
     },
 };
 
-const obj2 = {};
+const stringConvertObject = JSON.stringify(obj1);
+const obj2 = JSON.parse(stringConvertObject);
 
-for (prop in obj1) {
-    obj2[prop] = obj1[prop];
-}
+// JSON.stringify(objeto) - Esta función toma un objeto JavaScript y lo convierte en una cadena JSON.  
+// JSON.parse(objeto) - Esta función toma una cadena JSON y la convierte en un objeto JavaScript.
 
-const obj3 = Object.assign({}, obj1);
-
-// Una "Shallow copy" (copia superficial) en JavaScript se refiere a la creación de un nuevo objeto o estructura de datos que es una copia de otro objeto, pero donde solo se duplica la primera capa de propiedades o elementos. Las propiedades u elementos anidados como en el ejemplo anterior son las propiedades d: "d" y e: "e", estas no se copian en profundidad(solo superficialmente), por ello se mantienen como referencias al objeto original. Lo que ocasiona que si modificamos alguna de estas propiedades (d,e) anidadas en el Obj1 se haran los mismos cambios para Obj3 y viceversa.
+//Esta es la mejor manera de copiar objetos para no tener la referencia de objetos anidados y las modificaciones que se realicen en las propiedades anidadas no afecten al objeto original (Esto no funciona cuando los objetos contienen metodos).
