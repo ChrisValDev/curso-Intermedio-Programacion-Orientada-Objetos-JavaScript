@@ -555,3 +555,43 @@ for (const elemento of array) {
 // En este caso, no necesitas preocuparte por el tipo específico de array, siempre y cuando tenga una estructura iterable, lo que significa que se puede recorrer con un bucle for...of.
 
 // El duck typing promueve la flexibilidad y la reutilización de código, ya que te permite trabajar con objetos que no necesariamente comparten una jerarquía de clases o un tipo común, pero que pueden realizar las mismas acciones. Sin embargo, debes ser consciente de que esto también puede llevar a errores si asumes que un objeto tiene ciertas propiedades o métodos sin verificarlos previamente. Por lo tanto, es importante realizar comprobaciones adecuadas para garantizar el comportamiento deseado.
+
+//Atributos y métodos privados en prototipos
+
+// En JavaScript, no existe una verdadera implementación de atributos y métodos privados como en algunos otros lenguajes de programación, como Java o C#. Sin embargo, puedes simular atributos y métodos privados utilizando convenciones de nomenclatura y ámbitos de función. Aquí hay un ejemplo de cómo hacerlo:
+
+// Atributos privados:
+// Puedes simular atributos privados utilizando una convención de nomenclatura que indique que un atributo debe ser tratado como privado. Por ejemplo, puedes usar un guion bajo al comienzo del nombre del atributo para indicar que no debe ser accedido directamente desde fuera del objeto. Aunque esto no impedirá el acceso directo, es una señal para otros desarrolladores de que no deben hacerlo.
+
+function MiClase() {
+    var _atributoPrivado = 10; // Atributo privado
+    this.getAtributoPrivado = function() {
+        return _atributoPrivado;
+    };
+}
+
+var instancia = new MiClase();
+console.log(instancia.getAtributoPrivado()); // Acceder al atributo privado
+
+// Métodos privados:
+// Puedes simular métodos privados de manera similar, definiendo funciones dentro del constructor o método que no son accesibles desde fuera del objeto.
+
+function MiClase() {
+    var _atributo = 10;
+
+    function _metodoPrivado() {
+        return _atributo * 2;
+    }
+
+    this.metodoPublico = function() {
+        return _metodoPrivado();
+    };
+}
+
+var instancia = new MiClase();
+console.log(instancia.metodoPublico()); // Acceder al método privado
+
+
+// En ambos ejemplos, los atributos y métodos que comienzan con un guion bajo son considerados convencionalmente privados, pero aún pueden ser accedidos desde fuera del objeto si alguien lo intenta. No obstante, esta convención ayuda a indicar que no se deben usar directamente desde fuera y fomenta el encapsulamiento.
+
+// Ten en cuenta que a partir de ES6 (ECMAScript 2015), se introdujeron clases en JavaScript, que ofrecen una mejor forma de encapsulación y acceso a atributos y métodos privados utilizando el modificador #, pero esto aún no es ampliamente compatible en todos los navegadores y entornos.
