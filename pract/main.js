@@ -16,57 +16,12 @@ Object.defineProperty(juan, "navigator", {
     configurable: true,
 });
 
-// En JavaScript, las propiedades de un objeto pueden tener tres atributos que controlan su comportamiento y manipulación. Estos atributos son writable, enumerable, y configurable. Aquí te explico lo que significan:
+// En JavaScript, las "keys" se refieren a los nombres de las propiedades de un objeto. Cada propiedad de un objeto está compuesta por una clave (key) y un valor. Las "keys" son esenciales para acceder y manipular los valores asociados en un objeto. Puedes pensar en ellas como los nombres de las variables que almacenan datos en el objeto. Las "keys" también se conocen comúnmente como nombres de propiedades.
 
-// writable es un atributo booleano que determina si una propiedad puede ser modificada o reasignada después de haber sido creada. Si writable es true, la propiedad puede ser modificada; si es false, la propiedad no puede ser modificada.
-
-const objeto = {
-    propiedad1: 42
+const persona = {
+    nombre: 'Juan',
+    edad: 30,
+    ocupacion: 'Programador'
   };
-  
-  // Puedes modificar la propiedad1 si writable es true
-  objeto.propiedad1 = 50; // Esto es válido
-  
-  // Pero si writable es false
-  Object.defineProperty(objeto, 'propiedad2', {
-    value: 100,
-    writable: false
-  });
-  
-  objeto.propiedad2 = 200; // Esto lanzará un error en modo estricto
-  
-//   enumerable es un atributo booleano que determina si una propiedad es iterable en un bucle for...in y si se muestra en ciertos métodos como Object.keys() y JSON.stringify(). Si enumerable es true, la propiedad es visible en estas operaciones; si es false, la propiedad no es visible.
 
-const objeto = {
-    propiedad1: 42,
-    propiedad2: 'Hola',
-  };
-  
-  Object.defineProperty(objeto, 'propiedad3', {
-    value: true,
-    enumerable: false
-  });
-  
-  for (const key in objeto) {
-    console.log(key); // Solo imprimirá 'propiedad1' y 'propiedad2'
-  }
-  
-
-//   configurable es un atributo booleano que determina si una propiedad puede ser eliminada y si sus atributos (writable, enumerable, y configurable) pueden ser modificados. Si configurable es true, la propiedad puede ser eliminada y sus atributos pueden ser cambiados; si es false, la propiedad no puede ser eliminada y sus atributos no pueden ser modificados.
-
-const objeto = {
-    propiedad1: 42
-  };
-  
-  Object.defineProperty(objeto, 'propiedad2', {
-    value: 'Hola',
-    configurable: false
-  });
-  
-  delete objeto.propiedad1; // Esto está permitido
-  delete objeto.propiedad2; // Esto lanzará un error en modo estricto
-  
-  Object.defineProperty(objeto, 'propiedad2', {
-    enumerable: true
-  }); // Esto lanzará un error porque configurable es false
-  
+//   En este objeto persona, las "keys" son "nombre", "edad" y "ocupacion". Cada una de estas "keys" está asociada a un valor específico. Por ejemplo, persona.nombre te daría acceso al valor "Juan", persona.edad te daría acceso al valor 30 y persona.ocupacion te daría acceso al valor "Programador".
