@@ -7,11 +7,25 @@ const juan = {
     }
 };
 
-console.log(Object.getOwnPropertyDescriptors(juan));
 
 Object.defineProperty(juan, "navigator", {
     value: "Chrome",
-    enumerable: false,
+    enumerable: true,
     writable: true,
     configurable: true,
 });
+
+
+//Podemos decir que freeze y seal modifican "descriptores de propiedad" para las propiedades del objeto completo.
+
+// Object.freeze(objeto);
+
+// enumerable: true,
+// writable: false,
+// configurable: false,
+
+// Object.seal(objeto);
+
+// enumerable: true,
+// writable: true,
+// configurable: false,
