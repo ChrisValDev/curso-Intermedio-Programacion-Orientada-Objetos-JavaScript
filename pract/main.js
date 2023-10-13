@@ -1,13 +1,50 @@
-//Ejemplo de condicional para extraer datos de una lista(array)
-
-const numeritos = [2,3,45,256,6,3,7,3,76,89,3,5,1];
-
-function recursiva(numbersArray) {
-    if(numbersArray.length != 0) {
-        const firstNum = numbersArray[0];
-        console.log(firstNum);
-
-        numbersArray.shift();
-        recursiva(numbersArray);
+const obj1 = {
+    a: "a",
+    b: "b",
+    c: {
+        d: "d",
+        e: "e",
+    },
+    editA() {
+        this.a = "AAAAA";
     }
+};
+
+function isObject(subject) {
+    return typeof subject == "object";
+}
+function isArray(subject) {
+    return Array.isArray(subject);
+}
+
+
+function deepCopy(subject) {
+    let copySubject;
+
+    const subjectIsObject = isObject(subject);
+    const subjectIsArray = isArray(subject);
+
+    if (subjectIsArray) {
+        copySubject = [];
+    } else if (subjectIsObject) {
+        copySubject = {};
+    } else {
+        return subject;
+    }
+
+    for (key in subject) {
+        const keyIsObject = isObject(subject[key]);
+
+        if (keyIsObject) {
+            copySubject[key] = deepCopy(subject[key]);
+        } else {
+            if (subjectIsArray) {
+                copySubject.push(subject[key]);
+            } else {
+                copySubject[key] = subject[key];
+            }
+        }
+    }
+
+    return copySubject;
 }
