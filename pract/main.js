@@ -67,8 +67,10 @@ function createStudent({
     approvedCourses = [],
     learningPaths = [],
 } = {}) {
-    return {
-        name,
+    const private = {
+        _name: name,
+    };
+    const public = {
         age,
         email,
         approvedCourses,
@@ -77,8 +79,36 @@ function createStudent({
             twitter,
             instagram,
             facebook,
-        },        
+        },
+        get name() {
+            return private._name;
+        },
+        set name(newName) {
+            if (newName.length > 0) {
+                private._name = newName;
+            } else {
+                console.warn("Tu nombre debe de tener al menos un caracter");
+            }
+        },
+
+        // readName() {
+        //     return private._name;
+        // },
+        // changeName(newName) {
+        //     private._name = newName;
+        // },
     };
+
+    // Object.defineProperty(public, "readName", {
+    //     configurable: false,
+    //     writable: false,
+    // });
+    // Object.defineProperty(public, "changeName", {
+    //     configurable: false,
+    //     writable: false,
+    // });
+
+    return public;
 }
 
 const juan = createStudent({
